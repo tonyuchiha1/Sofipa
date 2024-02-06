@@ -1,0 +1,32 @@
+<mat-toolbar class="container-fluid" matTooltip="Puede presionar aqui para (mostrar/ocultar) el menu lateral" (click)="toggleSidebar()">
+    <mat-toolbar-row  class="justify-content-between">
+    <h3 class="color-white">Acreedores</h3>
+      <div class="row mr-3 ml-auto">
+        <ul class="row m-0 align-items-center">
+          <li>
+            <button
+              mat-button
+              [matMenuTriggerFor]="menu" *ngIf="usuario != ''"
+              class="">
+              <mat-icon class="user-image-icon ml-1 color-white"
+              >person_icon</mat-icon>
+              <strong class="color-white">{{usuario.username}}</strong>
+              <mat-icon class="user-image-icon ml-1"
+                >keyboard_arrow_down</mat-icon>
+
+            </button>
+            <button mat-icon-button class="color-white" >
+              <mat-icon class="color-white">menu</mat-icon>
+            </button>
+
+            <mat-menu #menu="matMenu"  >
+              <button mat-menu-item  (click)="cerrarSesion()">
+                <mat-icon>exit_to_app</mat-icon>
+                Cerrar Sesion
+              </button>
+            </mat-menu>
+          </li>
+        </ul>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>

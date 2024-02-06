@@ -1,0 +1,45 @@
+
+<mat-nav-list>
+  <div class="logo py-4">
+    <img src="./assets/img/logotipo.png" alt="Company Logo" routerLinkActive="list-item-active" routerLink="/layout" />
+  </div>
+  <span  *ngFor="let item of menu">
+    <span *ngIf="item.children && item.children.length > 0">
+      <mat-accordion >
+        <mat-expansion-panel >
+          <mat-expansion-panel-header >
+            <mat-panel-title class="titulos">
+              <!-- Cabeceras del submenu -->
+              <div fxLayout="row" fxLayoutAlign="space-between center" class="titulos">
+                <mat-icon>{{item.iconName}}</mat-icon>
+                <p>{{item.displayName}}</p>
+
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header >
+          <span *ngFor="let child of item.children" class="titulos">
+            <mat-list-item routerLink="{{this.child.route}}">
+              <!-- Entradas de cada submenú  -->
+              <div fxLayout="row" fxLayoutAlign="space-between center">
+                
+                
+                <p style="color: white; float: left; font-size: 90%;" > <mat-icon>{{child.iconName}}</mat-icon>{{child.displayName}}</p>
+              </div>
+            </mat-list-item>
+          </span>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </span>
+    <span *ngIf="!item.children || item.children.length === 0">
+      <mat-list-item routerLink="{{this.item.route}}">
+        <!-- Entradas principales -->
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+     
+          <p style="color: white;" >      <mat-icon>{{item.iconName}}</mat-icon>{{item.displayName}}</p>
+
+        </div>
+      </mat-list-item>
+    </span>
+  </span>
+</mat-nav-list>
+
